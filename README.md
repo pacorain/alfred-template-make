@@ -18,6 +18,7 @@ Then, clone your repo:
 
 ```sh
 git clone https://github.com/yourusername/yourreponame
+cd yourreponame
 ```
 
 ## Developing
@@ -55,7 +56,31 @@ Make sure to right click the installed workflow and change the values:
 
 ![Right click the workflow in the workflow list, and then click Edit Details](readme-images/right-click-edit-details.jpg)
 
-Any changes you make to the workflow in Alfred will apply to the [info.plist]() file in your repo for you to commit and push to GitHub. If you add any files to the repository, update `WORKFLOW_FILES` in your Makefile again and call `make clean && make install-dev` again.
+Any changes you make to the workflow in Alfred will apply to the [info.plist]() file in your repo for you to commit and push to GitHub. If you add any files to the workflow, update `WORKFLOW_FILES` in your Makefile again and call `make clean && make install-dev` again.
+
+**Warning**: `make install` and `make install-dev` actions **will** replace the workflow within Alfred. If you added any files to the workflow and need to keep them, move them somewhere else (or follow the steps below for icons) **before** calling `make install` or `make install-dev`.
+
+### 4. Add new icons to your repo
+
+If you install new icons to workflow items, these icons get written directly to the workflow and won't get saved to your repo. This creates a problem, because they will only exist in this version of the workflow and not in a production version or new development version.
+
+To fix this, I've written a script in [scripts/link_helper.py]() that looks for these icon files and moves them to your repo.
+
+To run it, just call
+
+```
+scripts/link_helper.py
+```
+
+The script takes the following steps:
+
+1. Finds your Alfred Preferences folder
+2. Finds the workflow with the same Bundle ID
+3. Checks each workflow item for a corresponding icon 
+4. If the icon exists, and is not a link back to your repo, the script:
+   1. Copies the file to your repo
+   2. Replaces the file in the workflow with a symbolic link
+   3. Updates `Makefile` to include the icon file in future workflow versions
 
 ## Deploying
 
