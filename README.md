@@ -22,6 +22,8 @@ git clone https://github.com/yourusername/yourreponame
 
 ## Developing
 
+### 1. Update Makefile
+
 Update the top of the `Makefile` in any text editor and change the name, and include any files you've added that your workflow needs to run.
 
 For example, if you plan on including `search.py` in your script, you can include that in the workflow by changing the `WORKFLOW_FILES` line:
@@ -31,13 +33,15 @@ For example, if you plan on including `search.py` in your script, you can includ
 WORKFLOW_FILES = info.plist serach.py icon.png
 ```
 
+### 2. Install a development version of the workflow to Alfred
+
 Then, create a **development version** of the workflow with this command:
 
 ```sh
 make install-dev
 ```
 
-This action creates symbolic links in the workflow that point back to your cloned repo. This means that any changes to the workflow show up in your git repo, and vice versa.
+This action creates symbolic links in the workflow that point back to your cloned repo, and installs a workflow with those links. This means that any changes to the workflow show up in your git repo, and vice versa.
 
 Make sure to right click the installed workflow and change the values:
 
