@@ -2,7 +2,7 @@
 
 This is a template for new workflows for the [Alfred app][] for macOS. 
 
-It comes with a [Makefile]() that contains to help you develop your workflow or create a deployable `.alfredworkflow` file.
+It comes with a [Makefile](Makefile) that contains to help you develop your workflow or create a deployable `.alfredworkflow` file.
 
 It is fairly simple, but I plan on using it as a root for other templates.
 
@@ -56,7 +56,7 @@ Make sure to right click the installed workflow and change the values:
 
 ![Right click the workflow in the workflow list, and then click Edit Details](readme-images/right-click-edit-details.jpg)
 
-Any changes you make to the workflow in Alfred will apply to the [info.plist]() file in your repo for you to commit and push to GitHub. If you add any files to the workflow, update `WORKFLOW_FILES` in your Makefile again and call `make clean && make install-dev` again.
+Any changes you make to the workflow in Alfred will apply to the [info.plist](info.plist) file in your repo for you to commit and push to GitHub. If you add any files to the workflow, update `WORKFLOW_FILES` in your Makefile again and call `make clean && make install-dev` again.
 
 **Warning**: `make install` and `make install-dev` actions **will** replace the workflow within Alfred. If you added any files to the workflow and need to keep them, move them somewhere else (or follow the steps below for icons) **before** calling `make install` or `make install-dev`.
 
@@ -64,7 +64,7 @@ Any changes you make to the workflow in Alfred will apply to the [info.plist]() 
 
 If you install new icons to workflow items, these icons get written directly to the workflow and won't get saved to your repo. This creates a problem, because they will only exist in this version of the workflow and not in a production version or new development version.
 
-To fix this, I've written a script in [scripts/link_helper.py]() that looks for these icon files and moves them to your repo.
+To fix this, I've written a script in [scripts/link_helper.py](scripts/link_helper.py) that looks for these icon files and moves them to your repo.
 
 To run it, just call
 
