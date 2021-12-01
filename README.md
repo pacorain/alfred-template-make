@@ -22,7 +22,15 @@ git clone https://github.com/yourusername/yourreponame
 
 ## Developing
 
-### 1. Update Makefile
+### 1. Calling de-template
+
+There are some files that are specific to the template repo, and aren't needed in forked workflows. To remove them, call [scripts/de-template]():
+
+```sh
+scripts/detemplate
+```
+
+### 2. Update Makefile
 
 Update the top of the `Makefile` in any text editor and change the name, and include any files you've added that your workflow needs to run.
 
@@ -33,7 +41,7 @@ For example, if you plan on including `search.py` in your script, you can includ
 WORKFLOW_FILES = info.plist serach.py icon.png
 ```
 
-### 2. Install a development version of the workflow to Alfred
+### 3. Install a development version of the workflow to Alfred
 
 Then, create a **development version** of the workflow with this command:
 
@@ -47,7 +55,7 @@ Make sure to right click the installed workflow and change the values:
 
 ![Right click the workflow in the workflow list, and then click Edit Details](readme-images/right-click-edit-details.jpg)
 
-Any changes you make to the workflow in Alfred will apply to the [info.plist]() file in your repo for you to commit and push to GitHub.
+Any changes you make to the workflow in Alfred will apply to the [info.plist]() file in your repo for you to commit and push to GitHub. If you add any files to the repository, update `WORKFLOW_FILES` in your Makefile again and call `make clean && make install-dev` again.
 
 ## Deploying
 
